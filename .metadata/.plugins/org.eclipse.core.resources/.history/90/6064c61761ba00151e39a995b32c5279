@@ -1,0 +1,48 @@
+import java.util.Arrays;
+
+
+public class Solution {
+    public static long factorial(long number) {
+      if (number <= 1)
+         return 1;
+         long temp=1;
+      while(number>1){
+          temp=temp*number;
+          number=number-1;
+      }     
+      return temp;
+   }
+   public static int findIndex(char[] a, char b){
+       int index=0;
+       for(int i=0;i< a.length;i++){
+           if(a[i]==b){
+               return i;
+           }
+       }
+       return -1;
+   }
+	public int findRank(String a) {
+	    char[] bSort=new char[a.length()];
+	    for(int i=0;i<a.length();i++){
+	        bSort[i]=a.charAt(i);
+	    }
+	    Arrays.sort(bSort);
+	    int ans=0;
+	    int count=0;
+	    int prev=-1;
+	    for(int i=0;i<a.length();i++){
+	        ++count;
+	    	int rank=findIndex(bSort,a.charAt(i))-i;
+	    	if(rank<0){
+	    		rank=0;
+	    	}
+	        ans=ans+( (rank)*(int)factorial(a.length()-count) );
+	        System.out.println(ans);
+	    }
+	    return ans+1;
+	}
+	public static void main(String[] args){
+		Solution ss=new Solution();
+		System.out.println(ss.findRank("dcba"));
+		}
+}

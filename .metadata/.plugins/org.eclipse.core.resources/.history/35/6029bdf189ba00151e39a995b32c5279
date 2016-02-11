@@ -1,0 +1,61 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+
+
+public class Solution {
+   
+	public static long factorial(long number) {
+      if (number <= 1)
+         return 1;
+         long temp=1;
+      while(number>1){
+          temp=temp*number;
+          number=number-1;
+      } 
+      int w2=(int)temp;
+      if(w2!=temp){
+    	  System.out.println("warning");
+      }
+      return temp;
+   }
+   public static int findIndex(StringBuilder a, char b){             
+       for(int i=0;i< a.length();i++){
+           if(a.charAt(i)==b){
+               return i;
+           }
+       }
+       return -1;
+   }
+	public long findRank(String a) {
+	    char[] bSort=new char[a.length()];
+	    for(int i=0;i<a.length();i++){
+	        bSort[i]=a.charAt(i);
+	    }
+	    Arrays.sort(bSort);
+	    StringBuilder sb=new StringBuilder();
+	    for(char c:bSort){
+	    	sb.append(c);
+	    }
+	    long ans=0;
+	    int count=0;	    
+	    for(int i=0;i<a.length();i++){
+	        ++count;
+	    	int rank=findIndex(sb,a.charAt(i));
+	    	sb.deleteCharAt(rank);
+	        ans=ans+( (rank)*factorial(a.length()-count) );
+	        //System.out.println(ans);
+	    }
+	    long t1=ans+1;
+	    int t2=(int)t1;
+	    if(t1!=t2){
+	    	System.out.println("warning");
+	    	return t2%1000003;
+	    }
+	    return ans+1;
+	}
+	public static void main(String[] args){
+		Solution ss=new Solution();
+		System.out.println(ss.findRank("DTNGJPURFHYEW"));
+		//System.out.println(338343515%1000003);
+		}
+}

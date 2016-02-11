@@ -1,0 +1,21 @@
+package com.String;
+
+import java.math.BigInteger;
+import java.util.Scanner;
+
+public class WordsLenLast {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc=new Scanner(System.in);
+		  String s="444444444444444444444444" ;
+		  BigInteger ans=new BigInteger(s);
+		  BigInteger ans1=new BigInteger(s);
+		  System.out.println(ans.equals(ans1));
+		  
+		  System.out.println(s.trim());
+		sc.close();
+
+	}
+
+}

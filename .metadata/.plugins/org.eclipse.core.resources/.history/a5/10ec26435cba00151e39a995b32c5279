@@ -1,0 +1,42 @@
+import java.util.Arrays;
+
+import com.Level2.Intro_Math.Examples.Solution;
+
+public class Solution {
+    public static long factorial(long number) {
+      if (number <= 1)
+         return 1;
+         long temp=1;
+      while(number>1){
+          temp=temp*number;
+          number=number-1;
+      }     
+      return temp;
+   }
+   public static int findIndex(char[] a, char b){
+       int index=0;
+       for(int i=0;i< a.length;i++){
+           if(a[i]==b){
+               return i;
+           }
+       }
+       return -1;
+   }
+	public int findRank(String a) {
+	    char[] bSort=new char[a.length()];
+	    for(int i=0;i<a.length();i++){
+	        bSort[i]=a.charAt(i);
+	    }
+	    Arrays.sort(bSort);
+	    int ans=0;
+	    for(int i=0;i<a.length();i++){
+	        int rank=findIndex(bSort,a.charAt(i));
+	        ans=ans+( rank*(int)factorial(a.length()-i+1) );
+	    }
+	    return ans;
+	}
+	public static void main(String[] args){
+		Solution ss=new Solution();
+		System.out.println(ss.findRank("abc"));
+		}
+}

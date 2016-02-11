@@ -1,0 +1,99 @@
+package com.Arrays.MaxSum;
+import java.util.ArrayList;
+import java.util.List;
+public class Solution {
+	public static ArrayList<Integer> maxset(ArrayList<Integer> a) {
+		Long sum=(long) 0, mSum=(long) 0;
+	    int l1=0, ml1=0;
+	    int l2=-1, ml2=-1;
+	    ArrayList<Integer> temp= new ArrayList<>();
+	    for(int i=0; i<a.size();i++){
+	        if(a.get(i)+sum>=sum){
+	            sum+=a.get(i);
+	            l2=i;
+	            if(mSum<sum){
+	                mSum=sum;
+	                ml2=l2;
+	                ml1=l1;	                
+	            }
+	            else if((mSum==sum)&&((l2-l1)>(ml2-ml1))){	            	
+	                  mSum=sum;
+	                ml2=l2;
+	                ml1=l1;
+	            }
+	        }else{	        	 
+	        	l1=i+1;
+	            sum=(long) 0;	           
+	        }
+	        
+	    }
+	    
+	    for(int j=ml1;j<=ml2;j++){
+	        temp.add(a.get(j));
+	    }
+	   
+	    
+	   return temp;
+	}
+	static int mod(double x, int m) {
+	    return (int)((double)x%m + m)%m;
+	}
+	public static double power(double x, int n) {
+		if (n == 0)
+			return 1;
+		if (n == 1)
+			return x;
+	 
+		int pn = n > 0 ? n : -n;// positive n
+		int pn2 = pn;
+	 
+		double px = x > 0 ? x : -x;// positive x
+		double result = px;
+	 
+		int k = 1;
+		//the key part of solving this problem
+		while (pn / 2 > 0) {
+			result = result * result;
+			pn = pn / 2;
+			k = k * 2;
+		}
+	 
+		result = result * power(px, pn2 - k);
+	 
+		// handle negative result
+		if (x < 0 && n % 2 == 1)
+			result = -result;
+	 
+		// handle negative power
+		if (n < 0)
+			result = 1 / result;
+	 
+		return result;
+	}
+	public static void main(String[] args){
+		
+		String a="1967513926, 1540383426, -1303455736, -521595368";
+		StringBuilder sb=new StringBuilder();
+		List<Integer> ans=new ArrayList<>();
+		for(int i=0; i<a.length();i++){
+			 
+			if((a.charAt(i)>='0'&& a.charAt(i)<='9' )|| a.charAt(i)=='-' ){
+				sb.append(a.charAt(i));
+				
+			}			
+			else if(a.charAt(i)==','){
+				ans.add(Integer.parseInt(sb.toString()));
+				sb=new StringBuilder();
+			}
+		}
+		ans.add(Integer.parseInt(sb.toString()));
+		
+		System.out.println(ans.toString());
+		ArrayList<Integer> ans1=new ArrayList<>(ans);
+		System.out.println(maxset(ans1));
+		System.out.println(power(2,30));
+		
+		
+	}
+	
+}

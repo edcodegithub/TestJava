@@ -1,0 +1,134 @@
+package com.String;
+
+import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class WordsLenLast {
+	
+	    public ArrayList<String> fullJustify(ArrayList<String> words, int L) {
+	        
+	        ArrayList<String> res = new ArrayList<String>();
+	        
+	        if(words.size() == 0 || L == 0){
+	            res.add("");
+	            return res;
+	        }
+	        
+	        if(words.size() == 1 && words.get(0).length() == 0){
+	            res.add(generateSpaces(L));
+	            return res;
+	        }
+	            
+	        int index = 0;
+	        while(index < words.size()){
+	             if(words.get(index).length()>L){
+		                res.clear();
+		                break;
+		        }
+		     //Need to take care of the cases when words contains any number of ""(empty string).
+		     if(words.get(index).length() == 0){
+		                index++;
+		                continue;
+		     }
+		        
+		     int cur = index+1;
+		     int len = words.get(index).length();
+		     String curLine = words.get(index);
+		        
+		     while(cur<words.size()){
+		            int temp = len + words.get(cur).length() + 1;
+		            if(temp<=L){
+	 	                curLine += " "+words.get(cur);
+	 	                len = temp;
+	 	                index = cur;
+	 	                cur ++;
+	 	            }
+	 	            else{
+	 	                index = cur-1;
+	 	                break;
+	 	            }
+	 	        }
+	 	 	index++;      	 	     
+	                if(index == words.size()){
+	 	 	         curLine = justifyString(curLine,L,true);
+	 	 	} 	 	     
+	                else curLine = justifyString(curLine,L,false);
+	                res.add(curLine);
+	         }                  
+	        return res;
+	       }          
+	  
+	       public String justifyString(String s,int L, boolean isLastLine){
+	            String reg = "\\s+";
+	 	    String[] last = s.split(reg);
+	            if(!isLastLine){
+	                int len = 0;
+	                for(String str : last)
+	                   len += str.length();
+	                           
+	               int space = L-len;
+	               int slots = last.length-1;
+	               int remain = 0;
+	               int even = space;
+	            if(slots!=0){
+	                 remain = space % slots;
+	                 even = space / slots;
+	             }
+	            
+	            StringBuilder refined = new StringBuilder();
+	            for(String str : last){
+	                 if(space>0){
+	                    str += generateSpaces(even);
+	                    space -= even;                   
+	                    if(remain>0){
+	                        str += " ";
+	                        remain--;
+	                        space--;
+	                    }
+	                }
+	                refined.append(str);
+	            }           
+	            return refined.toString();            
+	        }
+	        else{	       
+		       StringBuilder refineLast = new StringBuilder();
+		       refineLast.append(last[0]);
+		            
+		       for(int i=1;i<last.length;i++){
+		         	refineLast.append(" ");
+		            refineLast.append(last[i]);
+	            }
+		       
+	           String res = refineLast.toString();
+		       int space = L-res.length();
+		       res += generateSpaces(space);
+		            
+		       return res;
+	        }
+	    }
+	       
+	    public String generateSpaces(int length){      
+	        if(length<1)
+	             return "";
+	        StringBuilder res = new StringBuilder();
+	        while(length>0){
+	            res.append(" ");
+	            length--;
+	        }
+	        return res.toString();
+	    }
+	
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc=new Scanner(System.in);
+		 sc.close();
+		 WordsLenLast s1=new WordsLenLast();
+		 ArrayList<String> aa=new ArrayList<>();
+		 aa.add("");
+		 System.out.println(s1.fullJustify(aa, 10).size());
+
+	}
+
+}

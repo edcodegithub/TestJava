@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="C:/Users/srinath/Desktop/Amazon/stanford-postagger-2015-12-09/stanford-postagger.jar"/>
+	<classpathentry kind="lib" path="C:/Users/srinath/Downloads/jsoup-1.8.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/srinath/Desktop/Amazon/stanford-postagger-2015-12-09/stanford-postagger-3.6.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/srinath/Desktop/Amazon/stanford-postagger-2015-12-09/stanford-postagger-3.6.0-javadoc.jar"/>
+	<classpathentry kind="lib" path="C:/Users/srinath/Desktop/Amazon/stanford-postagger-2015-12-09/stanford-postagger-3.6.0-sources.jar"/>
+	<classpathentry kind="lib" path="C:/Users/srinath/Desktop/Amazon/stanford-postagger-2015-12-09/lib/slf4j-api.jar"/>
+	<classpathentry kind="lib" path="C:/Users/srinath/Desktop/Amazon/stanford-postagger-2015-12-09/lib/slf4j-simple.jar"/>
+	<classpathentry kind="lib" path="C:/Users/srinath/Desktop/Amazon/c++/commons-lang3-3.4/commons-lang3-3.4.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

@@ -1,0 +1,20 @@
+package com.String;
+
+import java.util.Scanner;
+
+public class WordsLenLast {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner sc=new Scanner(System.in);
+		  String s=" the sky is blue   " ;
+		  System.out.println(s.length());
+		  s.replaceAll("^\\s+|\\s+$", "");
+		  System.out.println(s.length());
+		  s.trim();
+		  System.out.println(s.length());
+		sc.close();
+
+	}
+
+}
